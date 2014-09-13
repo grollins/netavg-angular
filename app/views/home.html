@@ -1,0 +1,63 @@
+<div class="row" id="home-col-head">
+    <div class="col-lg-6">
+        <h2>Your FlexE jobs</h2>
+    </div>
+    <div class="col-lg-6">
+        <h2>Submit a new job</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6" id="home-jobs-list">
+        <table ng-show="jobs.length" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="job in jobs | filter:username">
+                    <td><a href="#/jobs/{{job.id}}/">{{job.title}}</a></td>
+                    <td>{{job.status}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-default" type="button" ng-click="refreshJobs()">Refresh Job List</button>
+    </div>
+    <div class="col-lg-6" id="home-job-submission">
+        <form class="form-horizontal" name="jobForm">
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Job Title</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" ng-model="job.title" placeholder="Enter job title" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Reference Structure</label>
+                <div class="col-sm-8 job-input">
+                    <input type="file" file="job.refFile" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Comparison Structure(s)</label>
+                <div class="col-sm-8 job-input">
+                    <input type="file" file="job.comparisonFile" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-8">
+                    <button type="submit" class="btn btn-block btn-default" ng-click="saveJob(job)" ng-disabled="!job.title">SUBMIT</button>
+                </div>
+            </div>
+        </form>
+        <div class="alert alert-danger alert-dismissable job-submission-alert" ng-show="submissionFailed">
+            <button type="button" class="close" aria-hidden="true" ng-click="closeAlert()">&times;</button>
+            <strong>Job Submission Failed</strong> ({{submissionStatus}} error)<br>If problem persists, please contact admin.
+        </div>
+        <div class="alert alert-success alert-dismissable job-submission-alert" ng-show="submissionSuccess">
+            <button type="button" class="close" aria-hidden="true" ng-click="closeAlert()">&times;</button>
+            <strong>Job Submitted</strong>
+        </div>
+    </div>
+</div>

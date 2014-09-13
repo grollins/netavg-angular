@@ -1,0 +1,9 @@
+<div class="form-signin">
+    <a ng-click="personaLogin()" class="persona-button dark"><span>Sign in with Persona</span></a>
+    <a href="http://www.mozilla.org/en-US/persona/" target="_blank"><h5>What is Persona?</h5></a>
+</div>
+
+<div class="alert alert-danger alert-dismissable login-alert" ng-show="loginFailed">
+    <button type="button" class="close" aria-hidden="true" ng-click="closeAlert()">&times;</button>
+    <strong>Login Failed</strong> ({{status}} error)<br>If problem persists, please contact admin.
+</div>
