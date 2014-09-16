@@ -48,6 +48,6 @@ angular.module('netavgApp', ['ngRoute'])
     })
   })
   .run( function(NetAvgBackend) {
-      // NetAvgBackend.setLocation('http://107.170.237.217');
-      NetAvgBackend.setLocation('http://127.0.0.1:8001');
+      NetAvgBackend.setLocation('http://104.131.42.27');
+      // NetAvgBackend.setLocation('http://127.0.0.1:8001');
   });

@@ -10,8 +10,12 @@ angular.module('netavgApp')
 
         $scope.job = {
             title: '',
-            refFile: null,
-            comparisonFile: null,
+            trajectoryFile: null,
+            knn: 32
+        };
+
+        $scope.options = {
+            knn: [4, 8, 16, 32, 64, 128]
         };
 
         $scope.closeAlert = function() {
@@ -23,8 +27,8 @@ angular.module('netavgApp')
         $scope.saveJob = function() {
             var fd = new FormData();
             fd.append('title', $scope.job.title);
-            fd.append('reference', $scope.job.refFile);
-            fd.append('comparison', $scope.job.comparisonFile);
+            fd.append('trajectory', $scope.job.trajectoryFile);
+            fd.append('knn', $scope.job.knn);
 
             NetAvgBackend.saveJob(fd)
             .success(function(data, status, headers, config) {
