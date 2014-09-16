@@ -8,11 +8,11 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="styles/persona-buttons.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/persona-buttons.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700"/>
@@ -41,8 +41,8 @@
     <section id="netavg-header">
         <div class="container">
             <div class="header" ng-controller="HeaderCtrl">
-                <h1 class="text-muted">FlexE-web</h1>
-                <img src="images/protG_small.png"></img>
+                <h1 class="text-muted">NetAvg</h1>
+                <img src="images/netavg_protein_small.png"></img>
                 <ul id="header-navbar" class="nav nav-pills" ng-show="isLoggedIn()" ng-cloak>
                         <li ng-class="{ active: isActive('/home')}"><a href="#/home"><span class="glyphicon glyphicon-home"></span>Home</a></li>
                         <li ng-class="{ active: isActive('/about')}"><a href="#/about"><span class="glyphicon glyphicon-book"></span>About</a></li>
@@ -115,6 +115,7 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
