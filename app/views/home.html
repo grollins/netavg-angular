@@ -1,6 +1,6 @@
 <div class="row" id="home-col-head">
     <div class="col-lg-6">
-        <h2>Your FlexE jobs</h2>
+        <h2>Your NetAvg jobs</h2>
     </div>
     <div class="col-lg-6">
         <h2>Submit a new job</h2>
@@ -33,15 +33,15 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-4 control-label">Reference Structure</label>
+                <label class="col-sm-4 control-label">Trajectory</label>
                 <div class="col-sm-8 job-input">
-                    <input type="file" file="job.refFile" required />
+                    <input type="file" file="job.trajectoryFile" required />
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-4 control-label">Comparison Structure(s)</label>
+                <label class="col-sm-4 control-label">Nearest Neighbors</label>
                 <div class="col-sm-8 job-input">
-                    <input type="file" file="job.comparisonFile" required />
+                    <select ng-model="job.knn" ng-options="choice for choice in options.knn"></select>
                 </div>
             </div>
             <div class="form-group">
