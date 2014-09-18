@@ -35,19 +35,11 @@ angular.module('netavgApp')
             });
         };
 
-        $scope.exportCSV = function() {
-            var csvContent = 'filename,rmsd,energy_ref_to_pdb,energy_pdb_to_ref\n';
-            for (var i = 0; i < $scope.results.length; i++) {
-                var r = $scope.results[i];
-                csvContent += r.name + ',';
-                csvContent += r.rmsd + ',';
-                csvContent += r.energy_ref_to_pdb + ',';
-                csvContent += r.energy_pdb_to_ref + '\n';
-            }
-
+        $scope.exportPDB = function() {
+            var pdbContent = $scope.results[0].output_pdb;
             var tempLink = document.createElement('a');
-            tempLink.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent));
-            tempLink.setAttribute('download', $scope.jobData.title + '.csv');
+            tempLink.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(pdbContent));
+            tempLink.setAttribute('download', $scope.jobData.title + '.pdb');
             tempLink.click();
         };
 
