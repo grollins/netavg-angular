@@ -43,4 +43,8 @@ angular.module('netavgApp')
             tempLink.click();
         };
 
+        $scope.didJobFail = function() {
+            return $scope.jobData.status === 'error';
+        };
+
     });
