@@ -5,6 +5,7 @@ angular.module('netavgApp')
         $scope.submissionFailed = false;
         $scope.submissionSucceeded = false;
         $scope.submissionStatus = '';
+        $scope.trajectoryUploaded = true;
         $scope.jobs = [];
         $scope.username = User.username();
 
@@ -24,18 +25,24 @@ angular.module('netavgApp')
             $scope.submissionStatus = '';
         };
 
+        $scope.isSubmitButtonDisabled = function() {
+            return !$scope.job.title || !$scope.trajectoryUploaded;
+        };
+
         $scope.saveJob = function() {
             var fd = new FormData();
             fd.append('title', $scope.job.title);
             fd.append('trajectory', $scope.job.trajectoryFile);
             fd.append('knn', $scope.job.knn);
 
+            $scope.trajectoryUploaded = false;
             NetAvgBackend.saveJob(fd)
             .success(function(data, status, headers, config) {
                 $scope.status = status;
                 $log.debug('Job post success');
                 $scope.refreshJobs();
                 $scope.submissionSucceeded = true;
+                $scope.trajectoryUploaded = true;
             })
             .error(function(data, status, headers, config) {
                 $scope.status = status;
@@ -44,6 +51,7 @@ angular.module('netavgApp')
                 $scope.refreshJobs();
                 $scope.submissionFailed = true;
                 $scope.submissionStatus = status;
+                $scope.trajectoryUploaded = true;
             });
             $scope.jobForm.$setPristine();
             $scope.job.title = '';

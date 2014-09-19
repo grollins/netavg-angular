@@ -47,10 +47,14 @@
             <div class="form-group">
                 <div class="col-sm-4"></div>
                 <div class="col-sm-8">
-                    <button type="submit" class="btn btn-block btn-default" ng-click="saveJob(job)" ng-disabled="!job.title">SUBMIT</button>
+                    <button type="submit" class="btn btn-block btn-default" ng-click="saveJob(job)" ng-disabled="isSubmitButtonDisabled()">SUBMIT</button>
                 </div>
             </div>
         </form>
+        <div class="alert alert-info" ng-show="trajectoryUploaded">
+            <i class="fa fa-refresh fa-spin"></i>
+            Uploading your trajectory...
+        </div>
         <div class="alert alert-danger alert-dismissable job-submission-alert" ng-show="submissionFailed">
             <button type="button" class="close" aria-hidden="true" ng-click="closeAlert()">&times;</button>
             <strong>Job Submission Failed</strong> ({{submissionStatus}} error)<br>If problem persists, please contact admin.
