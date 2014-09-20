@@ -29,7 +29,7 @@ angular.module('netavgApp', ['ngRoute'])
   })
   .config( function($provide) {
     $provide.decorator('$log', ['$delegate', function($delegate) {
-      // $delegate.debug = function(message) { };
+      $delegate.debug = function(message) { };
       return $delegate;
     }]);
   })
