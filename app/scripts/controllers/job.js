@@ -4,6 +4,7 @@ angular.module('netavgApp')
     .controller('JobCtrl', function($scope, $log, $location, $routeParams, NetAvgBackend) {
         $scope.jobId = $routeParams.jobId;
         $scope.jobDone = false;
+        $scope.jobFailed = false;
 
         $scope.refreshJob = function() {
             NetAvgBackend.getJobResults($scope.jobId)
@@ -14,6 +15,9 @@ angular.module('netavgApp')
                 $log.debug('Job refresh success');
                 if (data.status === 'done') {
                     $scope.jobDone = true;
+                }
+                if (data.status === 'error') {
+                    $scope.jobFailed = true;
                 }
             })
             .error(function(data, status) {
@@ -44,7 +48,7 @@ angular.module('netavgApp')
         };
 
         $scope.didJobFail = function() {
-            return $scope.jobData.status === 'error';
+            return $scope.jobFailed;
         };
 
     });
