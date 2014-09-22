@@ -63,18 +63,18 @@
     <section id="user-guide">
         <div class="container">
             <h3>What is this?</h3>
-            <p>Using this web app, you run FlexE calculations. FlexE computes the similarity between two protein structures using a simple elastic network model. In FlexE, the measure of structural similarity is the elastic network deformation energy required to transform one conformation to another. To submit jobs to FlexE through this web interface, all you need is a pdb file for each conformation of your protein of interest.</p>
+            <p>Using this web app, you can run NetAvg calculations. NetAvg takes an ensemble of protein conformations as input and returns, as output, a single conformation that best represents the ensemble. For further details, see our Proteins article, <a href="http://onlinelibrary.wiley.com/doi/10.1002/prot.24633/abstract" target="_blank">Extracting representative structures from protein conformational ensembles</a>.</p> 
+            <p>To submit jobs to NetAvg through this web interface, you'll need an ensemble of conformations for your protein of interest. The accepted input formats are: (1) a <code>.pdb</code> containing multiple frames; (2) a <code>.zip</code> file comprised of <code>.pdb</code> files. The input is limited to 1000 conformations or less. Inputs larger than 1000 conformations will return an error. To download the source code for NetAvg, visit our <a href="https://github.com/laufercenter/NetAvg">GitHub repository</a>.</p>
 
-            <h3>How to use FlexE-web</h3>
+            <h3>How to use the NetAvg app</h3>
             <ol>
                 <li>Click the Persona button to login. You can login with any valid email address.</li>
-                <li>After logging in, you'll see the FlexE-web Home page. The left side is a list of your FlexE-web jobs. If this is your first time logging in, the list will be empty. The right side is the job submission form, from which you can launch new FlexE calculations.</li>
-                <li>To submit a job, first specify a title for your job. Then, click the <code>Choose File</code> button in the "Reference Structure" field. In the dialog that appears, select the .pdb file for your protein of interest from your computer.</li>
-                <li>Repeat the file selection process for the "Comparison Structure(s)" field. The file for this field can either be another .pdb file or a .zip file of pdb structures. If you submit a zip file, the server will compare each structure in the zip with the reference structure.</li>
+                <li>After logging in, you'll see the NetAvg Home page. The left side is a list of your NetAvg jobs. If this is your first time logging in, the list will be empty. The right side is the job submission form, from which you can launch new NetAvg calculations.</li>
+                <li>To submit a job, first specify a title for your job. Then, click the <code>Choose File</code> button in the "Trajectory" field. In the dialog that appears, select the <code>.pdb</code> or <code>.zip</code> file for your conformational ensemble from your computer.</li>
+                <li>As an optional step, you can modify the number of neighbors that will be used to generate the representative structure from your conformational ensemble.</li>
                 <li>Click the <code>Submit</code> button. Your job will appear in the job list on the left side of the interface with a status of "submitted".</li>
-                <li>Clicking <code>Refresh Job List</code> will refresh the status of your jobs. When your job is complete, the status will change from "submitted" to "done" (usually only takes a minute or two). At that point, you can click on the name of your job and view the results.</li>
-                <li>The results page shows a table with four columns: (1) the file name of the comparsion structure; (2) the RMSD between the reference structure and the comparison structure; (3) the energetic cost of deforming the reference structure to the comparison structure; (4) the energetic cost of deforming the comparison structure to the reference structure. </li>
-                <li>To save your job to a file, click the <code>Export to CSV</code> button. You can also click the <code>Delete</code> button to remove the job from your list if you no longer need the results. <strong>Note: deleted jobs are not recoverable so delete with care.</strong></li>
+                <li>Clicking <code>Refresh Job List</code> will refresh the status of your jobs. When your job is complete, the status will change from "submitted" to "done" (calculation time will vary based on protein length, size of conformational ensemble, and number of jobs in queue). At that point, you can click on the name of your job and view the results.</li>
+                <li>On the results page shows click on <code>Download Output PDB</code> to save the representative conformation from your submitted ensemble. You can also click the <code>Delete</code> button to remove the job from your list if you no longer need the results. <strong>Note: deleted jobs are not recoverable so delete with care.</strong></li>
             </ol>
         </div>
     </section>
@@ -90,15 +90,13 @@
       </div>
     </footer>
 
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-XXXXX-X');
+       ga('create', 'UA-46335126-9', 'auto');
        ga('send', 'pageview');
     </script>
 
